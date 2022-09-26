@@ -1,0 +1,43 @@
+<form [formGroup]="loginForm">
+    <div class="container">
+        <h2>Linked<span>
+                <img src="assets/in.png" alt="" height="25" width="25" style="margin-left: 5px;margin-bottom:5px">
+            </span>
+            <a class="close" href="/">×</a>
+        </h2>
+
+        <div class="text">
+            <h1>Sign in</h1>
+            <p>Stay updated on your professional world</p>
+        </div>
+        <div class="your-input">
+            <div class="input">
+                <input type="text" name="uname" formControlName="username" id="uname" required />
+                <label for="uname">Username</label>
+            </div>
+            <div class="input">
+                <input type="password" name="password" formControlName="password" id="password" required />
+                <label for="password">
+                    Password
+                </label>
+            </div>
+        </div>
+        <a href="#" class="forgot-password-link">
+            Forgot Password?
+        </a>
+        <button [disabled]="loading" (click)="goToDashboard()">Sign in</button>
+        <p class="join-link">
+            New to linkedin?
+            <a href="#" class="join-now">
+                Join now
+            </a>
+        </p>
+
+        <div class="alert alert-warning" *ngIf="isSignUpFailed">
+            {{message}}
+        </div>
+        <div class="alert alert-success" *ngIf="isSuccessful">
+            Your Login is Successfully...
+        </div>
+    </div>
+</form>

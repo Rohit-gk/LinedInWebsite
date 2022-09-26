@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>All Posts</h2>
+        </div>
+        <div class="col-6">
+            <div>
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Search Posts..."
+                [(ngModel)]="filterTerm"
+              />
+              </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Page Title</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let post of posts.reverse() | filter: filterTerm | paginate: { itemsPerPage: 4, currentPage: p, totalItems: total }">
+                <td>
+                    <img src="{{post.imageUrl}}" alt="" style="height: 50px;width:50px">
+                </td>
+                <td>{{post.title}}</td>
+                <td>{{post.content}}</td>
+                <td>{{post.author}}</td>
+                <td><img src="assets/edit.png" style="height: 25px;margin-left: 30px;" alt="" routerLink="/dashboard/updatepost"></td>
+                <td>
+                    <img src="assets/delete.png" style="height: 25px;" alt="" (click)="deletePost(post.id)">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls class="pagination" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+</div>

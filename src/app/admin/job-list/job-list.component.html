@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>All Jobs</h2><br>
+
+    
+        </div>
+        <div class="col-6">
+            <div>
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Search Jobs..."
+                [(ngModel)]="filterTerm"
+              />
+              </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Organization</th>
+                <th>Date</th>
+                <th>Postion</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let job of jobs.reverse() | filter: filterTerm | paginate: { itemsPerPage: 4, currentPage: p, totalItems: total }">
+                <td>
+                    <img src="{{job.organizationLogo}}" alt="" style="height: 50px;">
+                </td>
+                <td>{{job.organization}}</td>
+                <td>{{job.date | date: 'short'}}</td>
+                <td>{{job.postion}}</td>
+                
+                
+                <td>
+                    <img src="assets/delete.png" alt="" height="25" (click)="deleteJobs(job.JobId)">
+                </td>
+                <!-- (click)="deleteProfile(profile.userId)" -->
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls class="pagination" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+</div>

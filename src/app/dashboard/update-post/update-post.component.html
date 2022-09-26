@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+    
+        <div class="col-6">
+            <h1>Update Post</h1>
+    
+            <form [formGroup]="ngForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="title" formControlName="title" placeholder="Enter title">
+                </div>
+                <div class="mb-3">
+                    <textarea type="text" class="form-control" name="content" formControlName="content" placeholder="Enter Content"></textarea>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="summary" formControlName="summary" placeholder="Enter Summary">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="imageUrl" formControlName="imageUrl" placeholder="Enter Imageurl">
+                </div>
+                
+                <div class="mb-3">
+                    <input type="date" class="form-control" name="author" formControlName="author" placeholder="Enter Date">
+                </div>
+                
+                <button class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-success" (click)="allPostPage()">View All Posts</button>
+            </form><br>
+        </div>
+    
+        <div class="col-3">
+    
+        </div>
+    </div>
+</div>

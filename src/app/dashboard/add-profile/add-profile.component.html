@@ -1,0 +1,293 @@
+<div class="container">
+    <div class="row">
+        <div class="card col-4 mt-3">
+            <p style="font-weight: bold;font-size: 25px;">Social Profiles</p>
+            <p style="font-size: 20px;">Add elsewhere links to your profile</p>
+            <div class="row">
+                <div class="col-4">
+                    <img src="assets/facebook.jfif" alt="" height="30" width="30">
+                </div>
+                <div class="col-8">
+                    <a href="https://www.facebook.com/" target="_blank">Add facebook link</a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-4">
+                    <img src="assets/twitter.png" alt="" height="30" width="30">
+                </div>
+                <div class="col-8">
+                    <a href="https://twitter.com/i/flow/login" target="_blank">Add twitter link</a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-4">
+                    <img src="assets/instagram.jfif" alt="" height="30" width="30">
+                </div>
+                <div class="col-8">
+                    <a href="https://www.instagram.com/accounts/login/" target="_blank">Add instagram link</a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-4">
+                    <img src="assets/youtube.png" alt="" height="30" width="30">
+                </div>
+                <div class="col-8">
+                    <a href="https://www.youtube.com/account" target="_blank">Add youtube link</a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-4">
+                    <img src="assets/skype.jfif" alt="" height="30" width="30">
+                </div>
+                <div class="col-8">
+                    <a href="https://www.skype.com/en/" target="_blank">Add skype link</a>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="col-8">
+            <div class="card m-3">
+                <h4 class="card-body">Add Information</h4>
+                <div class="card-body">
+
+                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="firstName" formControlName="firstName"
+                                        placeholder="Enter first name"
+                                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">First name is required</div>
+                                        <div *ngIf="f.firstName.errors.pattern">Only String accept here</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="lastName" formControlName="lastName"
+                                        placeholder="Enter last name"
+                                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lastName.errors.required">Last name is required</div>
+                                        <div *ngIf="f.lastName.errors.pattern">Only String accept here</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="location" formControlName="location"
+                                        placeholder="Enter profile image url"
+                                        [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+                                    <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                                        <div *ngIf="f.location.errors.required">Image url is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" name="mobile" formControlName="mobile"
+                                        placeholder="Enter mobile number"
+                                        [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+                                    <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                        <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+                                        <div *ngIf="f.mobile.errors.pattern">Enter 10 digit mobile number.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <input type="date" class="form-control" name="birthDate" formControlName="birthDate"
+                                        placeholder="Select birth date" max="2022-09-26"
+                                        [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }" />
+                                        <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
+                                          <div *ngIf="f.birthDate.errors.required">Birth date is required</div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="email" formControlName="email"
+                                        placeholder="Enter email"
+                                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="address" formControlName="address"
+                                        placeholder="Enter address" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
+                                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                        <div *ngIf="f.address.errors.required">Address is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="organization"
+                                        formControlName="organization" placeholder="Enter organization name"
+                                        [ngClass]="{ 'is-invalid': submitted && f.organization.errors }" />
+                                    <div *ngIf="submitted && f.organization.errors" class="invalid-feedback">
+                                        <div *ngIf="f.organization.errors.required">Organization name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-6">
+                                <div class="mb-3">
+                                    <input type="file" class="form-control" name="uploadCV" formControlName="uploadCV"
+                                        placeholder="Upload file">
+                                </div>
+                            </div> -->
+                        </div><br>
+
+                        <div class="form-row">
+                            <button class="btn btn-danger mr-2" (click)="goProfilePage()"
+                                style="width: 20%;">Cancel</button>
+                            <!-- <button class="btn btn-secondary mr-2" style="width: 20%;" routerLink="/dashboard/profilelist">View Profile</button> -->
+                            <!-- <button class="btn btn-danger mr-2" style="width: 20%;">Cancel</button> -->
+                            <button class="btn btn-primary" style="width: 20%;">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- <form [formGroup]="registerForm">
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="text" formControlName="firstname" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"
+                                    placeholder="Enter first name" />
+                                <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                                    <div *ngIf="f.firstname.errors.required">First Name is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <input type="text" formControlName="lastname" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
+                                    placeholder="Enter last name" />
+                                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                                    <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                                    <div *ngIf="f.lastname.errors.pattern">Only String accept here</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="text" formControlName="location" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.location.errors }"
+                                    placeholder="Enter location" />
+                                <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                                    <div *ngIf="f.location.errors.required">Location is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <input type="number" formControlName="mobile" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+                                    placeholder="Enter mobile number" />
+                                <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                    <div *ngIf="f.mobile.errors.required">Mobile no is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="date" formControlName="bdate" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.bdate.errors }"
+                                    placeholder="Select birth date" />
+                                <div *ngIf="submitted && f.bdate.errors" class="invalid-feedback">
+                                    <div *ngIf="f.bdate.errors.required">Birth date is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <input type="text" formControlName="email" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                                    placeholder="Enter email" />
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <textarea type="text" formControlName="address" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+                                    placeholder="Enter address"></textarea>
+                                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                    <div *ngIf="f.address.errors.required">Address is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <input type="text" formControlName="organization" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.organization.errors }"
+                                    placeholder="Enter organization" />
+                                <div *ngIf="submitted && f.organization.errors" class="invalid-feedback">
+                                    <div *ngIf="f.organization.errors.required">Organization is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <select type="text" formControlName="language" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.language.errors }"
+                                    placeholder="Enter language">
+                                    <option value="1">English</option>
+                                    <option value="1">Hindi</option>
+                                    <option value="1">Marathi</option>
+                                </select>
+                                <div *ngIf="submitted && f.language.errors" class="invalid-feedback">
+                                    <div *ngIf="f.language.errors.required">Language is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <button class="btn btn-success mr-2" (click)="goProfilePage()" style="width: 20%;">Back</button>
+                            <button class="btn btn-secondary mr-2" style="width: 20%;">View Profiles</button>
+                            <button class="btn btn-danger mr-2" style="width: 20%;">Cancel</button>
+                            <button class="btn btn-primary" style="width: 20%;">Submit</button>
+                        </div>
+
+                    </form> -->

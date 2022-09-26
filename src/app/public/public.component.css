@@ -1,0 +1,28 @@
+.img {
+    height: 100px;
+    width: 100px;
+}
+
+.img1 {
+    height: 400px;
+    width: 100%;
+}
+
+.scroll {
+    overflow: auto;
+    overflow-x: hidden;
+}
+.color{
+    color: white;
+}
+.imgback{
+    height: 440px;
+    width: 100%;
+}
+.loginclass{
+    margin-left: 360px;
+}
+.heading{
+    font-size: 30px;
+    margin-left: 200px;
+}

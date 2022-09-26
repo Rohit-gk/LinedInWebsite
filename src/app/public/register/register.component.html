@@ -1,0 +1,50 @@
+<form [formGroup]="form">
+    <div class="container">
+        <h2>Linked<span>
+                <img src="assets/in.png" alt="" height="25" width="25" style="margin-left: 5px;margin-bottom:5px">
+            </span>
+            <span style="font-size: 30px;margin-left: 100px;color: black;">Sign Up</span>
+            <a class="close" href="/">×</a>
+        </h2>
+        <div class="your-input">
+            <div class="input">
+                <input type="text" name="name" id="name" formControlName="name" required />
+                <label for="name">Name</label>
+            </div>
+            <div class="input">
+                <input type="text" name="username" id="username" formControlName="username" required />
+                <label for="username">
+                    Username
+                </label>
+            </div>
+            <div class="input">
+                <input type="text" name="mobile" id="mobile" formControlName="mobile" required />
+                <label for="mobile">
+                    Mobile
+                </label>
+            </div>
+            <div class="input">
+                <input type="text" name="email" id="email" formControlName="email" required />
+                <label for="email">
+                    Email
+                </label>
+            </div>
+            <div class="input">
+                <input type="password" name="password" id="password" formControlName="password" required />
+                <label for="password">
+                    Password
+                </label>
+            </div>
+        </div>
+        <button (click)="onSubmit()">Register</button>
+
+        <div class="alert alert-warning" *ngIf="isSignUpFailed">
+            {{message}}
+        </div>
+
+        <div class="alert alert-success" *ngIf="isSuccessful">
+            Your registration is successfully...
+        </div>
+
+    </div>
+</form>
