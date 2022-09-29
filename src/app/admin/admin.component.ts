@@ -9,17 +9,15 @@ import { TokenService } from '../services/token.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private token:TokenService,private router:Router) { }
+  constructor(private token: TokenService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
-  logout(){
+  logout() {
     this.token.removeToken();
     this.token.isLoggedIn.next(false);
     localStorage.clear();
     this.router.navigate(['/'])
   }
-
-
 }

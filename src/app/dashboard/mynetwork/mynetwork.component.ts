@@ -10,19 +10,17 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./mynetwork.component.css']
 })
 export class MynetworkComponent implements OnInit {
-
   public request: any = {};
-  
-  constructor(private api:ApiService,private toaster:NgToastService) { }
 
-  myrequest : MyRequest[] = [];
-  connections: Connection[] =[];
-  ngOnInit(){
-   this.AllConnections();
-   this.MyInvitations();
+  constructor(private api: ApiService, private toaster: NgToastService) { }
+  myrequest: MyRequest[] = [];
+  connections: Connection[] = [];
+  ngOnInit() {
+    this.AllConnections();
+    this.MyInvitations();
   }
 
-  AllConnections(){
+  AllConnections() {
     this.api.AllNonFriendConnection().subscribe(
       response => {
         this.connections = response;
@@ -30,7 +28,7 @@ export class MynetworkComponent implements OnInit {
     )
   }
 
-  MyInvitations(){
+  MyInvitations() {
     this.api.MyAllInvitaions().subscribe(
       response => {
         this.myrequest = response;
@@ -38,7 +36,7 @@ export class MynetworkComponent implements OnInit {
     )
   }
 
-  SendFriendRequests(requestId : any){
+  SendFriendRequests(requestId: any) {
     this.api.SendFriendRequest(requestId).subscribe(
       response => {
         this.toaster.success({
@@ -48,20 +46,20 @@ export class MynetworkComponent implements OnInit {
         });
         this.request = response;
         console.log("Request", response);
-        
+
       }
     )
   }
 
-  AcceptOrRejectRequest(reqId:any,status:string){
-    this.api.AcceptRejectRequest(reqId,status).subscribe(
+  AcceptOrRejectRequest(reqId: any, status: string) {
+    this.api.AcceptRejectRequest(reqId, status).subscribe(
       response => {
         this.toaster.success({
           summary: 'Success',
           detail: 'Now you are friends',
           duration: 4000,
         });
-       // this.request = response;
+        // this.request = response;
         console.log("Request", response);
       }
     )

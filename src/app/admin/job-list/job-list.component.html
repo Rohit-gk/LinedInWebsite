@@ -1,23 +1,20 @@
 <div class="container">
     <div class="row">
-        <div class="col-6">
+        <div class="col-3 d-flex">
             <h2>All Jobs</h2><br>
-
-    
         </div>
         <div class="col-6">
-            <div>
-                <input
-                type="text"
-                class="form-control"
-                placeholder="Search Jobs..."
-                [(ngModel)]="filterTerm"
-              />
-              </div>
+            <div class="input-icons d-flex" style="justify-content: right;">
+                <i class="fa fa-search icon"></i>
+                <input type="text" class="form-control" placeholder="Search Jobs..." [(ngModel)]="filterTerm" />
+            </div>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-primary" routerLink="/admin/addjob">Create Job</button>
         </div>
     </div>
 
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Logo</th>
@@ -29,19 +26,17 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let job of jobs.reverse() | filter: filterTerm | paginate: { itemsPerPage: 4, currentPage: p, totalItems: total }">
+            <tr
+                *ngFor="let job of jobs.reverse() | filter: filterTerm | paginate: { itemsPerPage: 5, currentPage: p, totalItems: total }">
                 <td>
                     <img src="{{job.organizationLogo}}" alt="" style="height: 50px;">
                 </td>
                 <td>{{job.organization}}</td>
-                <td>{{job.date | date: 'short'}}</td>
+                <td>{{job.date | date: 'dd/MM/yyyy'}}</td>
                 <td>{{job.postion}}</td>
-                
-                
                 <td>
-                    <img src="assets/delete.png" alt="" height="25" (click)="deleteJobs(job.JobId)">
+                    <img src="assets/delete.png" alt="" height="25" (click)="deleteJobs(job.jobId)">
                 </td>
-                <!-- (click)="deleteProfile(profile.userId)" -->
             </tr>
         </tbody>
     </table>

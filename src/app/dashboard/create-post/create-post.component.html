@@ -1,64 +1,54 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-
         </div>
-    
+
         <div class="col-6">
             <h1>Add Post</h1>
-    
             <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
                 <div class="mb-3">
                     <input type="text" class="form-control" name="title" formControlName="title"
-                     placeholder="Enter title" 
-                     [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
-                     <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                         <div *ngIf="f.title.errors.required">Title is required</div>
-                         <div *ngIf="f.title.errors.pattern">Only String accept here</div>
-                     </div>
+                        placeholder="Enter title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                        <div *ngIf="f.title.errors.required">Title is required</div>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <textarea type="text" class="form-control" name="content" formControlName="content" 
-                    placeholder="Enter Content"
-                    [ngClass]="{ 'is-invalid': submitted && f.content.errors }"></textarea>
-                     <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
-                         <div *ngIf="f.content.errors.required">Content is required</div>
-                     </div>
+                    <textarea type="text" class="form-control" name="content" formControlName="content"
+                        placeholder="Enter Content"
+                        [ngClass]="{ 'is-invalid': submitted && f.content.errors }"></textarea>
+                    <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
+                        <div *ngIf="f.content.errors.required">Content is required</div>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="summary" formControlName="summary" 
-                    placeholder="Enter Summary"
-                    [ngClass]="{ 'is-invalid': submitted && f.summary.errors }" />
-                     <div *ngIf="submitted && f.summary.errors" class="invalid-feedback">
-                         <div *ngIf="f.summary.errors.required">Summary is required</div>
-                     </div>
+                    <input type="text" class="form-control" name="summary" formControlName="summary"
+                        placeholder="Enter Summary" [ngClass]="{ 'is-invalid': submitted && f.summary.errors }" />
+                    <div *ngIf="submitted && f.summary.errors" class="invalid-feedback">
+                        <div *ngIf="f.summary.errors.required">Summary is required</div>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <input type="text" class="form-control" name="imageUrl" formControlName="imageUrl"
-                     placeholder="Enter Imageurl" 
-                     [ngClass]="{ 'is-invalid': submitted && f.imageUrl.errors }" />
-                     <div *ngIf="submitted && f.imageUrl.errors" class="invalid-feedback">
-                         <div *ngIf="f.imageUrl.errors.required">Image url is required</div>
-                     </div>
+                        placeholder="Enter Imageurl" [ngClass]="{ 'is-invalid': submitted && f.imageUrl.errors }" />
+                    <div *ngIf="submitted && f.imageUrl.errors" class="invalid-feedback">
+                        <div *ngIf="f.imageUrl.errors.required">Image url is required</div>
+                    </div>
                 </div>
-                
+
                 <div class="mb-3">
                     <input type="date" class="form-control" name="author" formControlName="author"
-                     placeholder="Enter Date"
-                     [ngClass]="{ 'is-invalid': submitted && f.author.errors }" />
-                     <div *ngIf="submitted && f.author.errors" class="invalid-feedback">
-                         <div *ngIf="f.author.errors.required">Date is required</div>
-                     </div>
+                        placeholder="Enter Date" [ngClass]="{ 'is-invalid': submitted && f.author.errors }" />
+                    <div *ngIf="submitted && f.author.errors" class="invalid-feedback">
+                        <div *ngIf="f.author.errors.required">Date is required</div>
+                    </div>
                 </div>
-                
                 <button class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-danger mr-2" routerLink="/dashboard/posts">Cancel</button>
-                <!-- <button class="btn btn-success" (click)="allPostPage()">View All Posts</button> -->
             </form><br>
         </div>
-    
+
         <div class="col-3">
-    
         </div>
     </div>
 </div>

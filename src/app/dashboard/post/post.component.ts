@@ -70,4 +70,8 @@ export class PostComponent implements OnInit {
     }
   }
 
+  goToCommentSection(){
+    this.router.navigate(['/dashboard/commentbox'])
+  }
+
 }

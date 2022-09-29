@@ -4,6 +4,7 @@ import { AuthenticationGuard } from '../authentication.guard';
 import { AddProfileComponent } from './add-profile/add-profile.component';
 import { AllPostsComponent } from './all-posts/all-posts.component';
 import { ChatBoxComponent } from './chat-box/chat-box.component';
+import { CommentBoxComponent } from './comment-box/comment-box.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { DashboardComponent } from './dashboard.component';
 import { JobsComponent } from './jobs/jobs.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: 'profilelist', component: ProfileListComponent ,},
       { path: 'updatepost/:id', component: UpdatePostComponent,  },
       { path: 'chatbox', component: ChatBoxComponent ,},
+      { path: 'commentbox', component: CommentBoxComponent ,},
     ]
     
   }

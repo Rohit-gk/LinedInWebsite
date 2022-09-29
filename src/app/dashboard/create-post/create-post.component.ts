@@ -12,33 +12,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(private api:ApiService,private router:Router,private toaster:NgToastService,private formBuilder:FormBuilder) { }
-
+  constructor(private api: ApiService, private router: Router, private toaster: NgToastService, private formBuilder: FormBuilder) { }
   postForm: any = FormGroup;
   submitted = false;
+  dt: any;
+  dataDisplay: any;
 
-  // post : AddPostRequest = {
-  //   title:'',
-  //   content:'',
-  //   summary:'',
-  //   imageUrl:'',
-  //   urlHandle:'',
-  //   author:''
-  // }
-
-  ngOnInit(){
+  ngOnInit() {
     this.postForm = this.formBuilder.group({
-      title: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
+      title: ['', Validators.required,],
       content: ['', Validators.required],
-      summary: ['',Validators.required],
+      summary: ['', Validators.required],
       imageUrl: ['', Validators.required],
       author: ['', [Validators.required]],
     });
   }
-  
+
   get f() { return this.postForm.controls; }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
     if (this.postForm.invalid) {
       return;
@@ -47,8 +39,8 @@ export class CreatePostComponent implements OnInit {
       (res) => {
         if (res) {
           this.toaster.success({
-            summary: 'Post Added Successfully',
-            detail: 'Success',
+            summary: 'Success',
+            detail: 'Post Added Successfully',
             duration: 2000,
           });
           this.router.navigate(['/dashboard/posts']);
@@ -63,7 +55,7 @@ export class CreatePostComponent implements OnInit {
       });
   }
 
-  allPostPage(){
+  allPostPage() {
     this.router.navigate(['/dashboard/posts'])
   }
 

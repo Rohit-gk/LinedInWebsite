@@ -13,11 +13,11 @@ const routes: Routes = [
     path: '', component: AdminComponent,
 
     children: [
-      { path: 'userspost', component: UsersPostComponent , },
-      { path: 'usersprofile', component: UsersProfilesComponent , },
-      { path: 'admindashboard', component: AdminDashboardComponent , },
-      { path: 'addjob', component: AddJobComponent , },
-      { path: 'joblist', component: JobListComponent , },
+      { path: 'userspost', component: UsersPostComponent},
+      { path: 'usersprofile', component: UsersProfilesComponent},
+      { path: 'admindashboard', component: AdminDashboardComponent},
+      { path: 'addjob', component: AddJobComponent},
+      { path: 'joblist', component: JobListComponent},
     ]
   }
 ];

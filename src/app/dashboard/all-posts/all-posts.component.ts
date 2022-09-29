@@ -3,15 +3,13 @@ import { Router } from '@angular/router';
 import { Post } from 'src/app/Models/post.models';
 import { ApiService } from 'src/app/services/api.service';
 
-
 @Component({
   selector: 'app-all-posts',
   templateUrl: './all-posts.component.html',
   styleUrls: ['./all-posts.component.css']
 })
 export class AllPostsComponent implements OnInit {
-
-  constructor(private api: ApiService,private router:Router) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   filterTerm!: string;
   posts: Post[] = [];
@@ -38,7 +36,7 @@ export class AllPostsComponent implements OnInit {
     }
   }
 
-  goToPostEdit(id:any){
+  goToPostEdit(id: any) {
     this.router.navigate([`/dashboard/updatepost/${id}`])
   }
 

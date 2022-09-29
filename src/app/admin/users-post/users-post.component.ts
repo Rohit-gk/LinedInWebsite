@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/Models/post.models';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -9,36 +10,40 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class UsersPostComponent implements OnInit {
 
- constructor(private api:ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   filterTerm!: string;
-  posts:Post[] = [];
+  posts: Post[] = [];
   p: number = 1;
   total: number = 0;
 
-  ngOnInit(){
+  ngOnInit() {
     this.getPosts();
   }
 
-  getPosts(){
+  getPosts() {
     this.api.AllPosts().subscribe(
-      response =>{
+      response => {
         this.posts = response;
       }
     )
   }
 
-  deletePost(id:any) {
-    if(confirm("Are you sure to delete " + id)) {
+  goToEditPost(id: any) {
+    this.router.navigate([`/admin/updatepost/${id}`])
+  }
+
+  deletePost(id: any) {
+    if (confirm("Are you sure to delete " + id)) {
       this.api.deletePost(id).subscribe(response => {
         location.reload();
       })
     }
   }
 
-  pageChangeEvent(event: number){
+  pageChangeEvent(event: number) {
     this.p = event;
     this.getPosts();
-}
+  }
 
 }

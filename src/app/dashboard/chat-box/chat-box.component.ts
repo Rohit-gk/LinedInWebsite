@@ -3,17 +3,14 @@ import { Component, VERSION, AfterViewChecked, ElementRef, ViewChild, OnInit } f
 import { Message, STATUSES } from 'src/app/Models/model';
 import { USERS } from 'src/app/Models/data';
 
-
 @Component({
   selector: 'app-chat-box',
   templateUrl: './chat-box.component.html',
   styleUrls: ['./chat-box.component.css']
 })
 export class ChatBoxComponent implements OnInit {
- 
-
   statuses = STATUSES;
-  activeUser:any;
+  activeUser: any;
   users = USERS;
   expandStatuses = false;
   expanded = false;
@@ -22,67 +19,65 @@ export class ChatBoxComponent implements OnInit {
     name: 'Media bot'
   }
 
-  constructor(private myScrollContainer: ElementRef){}
-  
-    
+  constructor(private myScrollContainer: ElementRef) { }
 
-    ngOnInit() { 
-      this.setUserActive(USERS[0])
-        this.scrollToBottom();
-    }
-        ngAfterViewChecked() {        
-        this.scrollToBottom();        
-    } 
+  ngOnInit() {
+    this.setUserActive(USERS[0])
+    this.scrollToBottom();
+  }
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
 
-  addNewMessage(inputField:any) {
+  addNewMessage(inputField: any) {
     const val = inputField.value?.trim()
     if (val.length) {
-      this.activeUser.messages.push({type: 'sent', message: val})
+      this.activeUser.messages.push({ type: 'sent', message: val })
       this.activeUser.ws.send(
-        JSON.stringify({id: this.activeUser.id, message: val})
-        );
+        JSON.stringify({ id: this.activeUser.id, message: val })
+      );
     }
     inputField.value = '';
   }
 
-    scrollToBottom(): void {
-        try {
-            this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-        } catch(err) { }                 
-    }
+  scrollToBottom(): void {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch (err) { }
+  }
 
-    setUserActive(user:any) {
-      this.activeUser = user;
-      this.connectToWS();
-    }
+  setUserActive(user: any) {
+    this.activeUser = user;
+    this.connectToWS();
+  }
 
-    connectToWS() {
-      if (this.activeUser.ws && this.activeUser.ws.readyState !== 1) {
-        this.activeUser.ws = null;
-        this.activeUser.status = STATUSES.OFFLINE;
+  connectToWS() {
+    if (this.activeUser.ws && this.activeUser.ws.readyState !== 1) {
+      this.activeUser.ws = null;
+      this.activeUser.status = STATUSES.OFFLINE;
+    }
+    if (this.activeUser.ws) {
+      return;
+    }
+    const ws = new WebSocket('wss://compute.hotelway.ai:4443/?token=TESTTOKEN');
+    this.activeUser.ws = ws;
+    ws.onopen = (event) => this.onWSEvent(event, STATUSES.ONLINE);
+    ws.onclose = (event) => this.onWSEvent(event, STATUSES.OFFLINE);
+    ws.onerror = (event) => this.onWSEvent(event, STATUSES.OFFLINE);
+    ws.onmessage = (result: any) => {
+      const data = JSON.parse(result?.data || {});
+      const userFound = this.users.find(u => u.id === data.id);
+      if (userFound) {
+        userFound.messages.push(
+          new Message('replies', data.message)
+        )
       }
-      if (this.activeUser.ws) {
-        return;
-      }
-      const ws = new WebSocket('wss://compute.hotelway.ai:4443/?token=TESTTOKEN');
-      this.activeUser.ws = ws;
-      ws.onopen = (event) => this.onWSEvent(event, STATUSES.ONLINE);
-      ws.onclose = (event) => this.onWSEvent(event, STATUSES.OFFLINE);
-      ws.onerror = (event) => this.onWSEvent(event, STATUSES.OFFLINE);
-      ws.onmessage = (result: any) => {
-        const data = JSON.parse(result?.data || {});
-        const userFound = this.users.find(u => u.id === data.id);
-        if (userFound) {
-          userFound.messages.push(
-             new Message('replies', data.message)
-          )
-        }
-      };
-    }
+    };
+  }
 
-    onWSEvent(event:any, status: STATUSES) {
-      this.users.forEach(u => u.ws === event.target ? u.status = status : null)
-    }
+  onWSEvent(event: any, status: STATUSES) {
+    this.users.forEach(u => u.ws === event.target ? u.status = status : null)
+  }
 }
 
 

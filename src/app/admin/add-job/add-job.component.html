@@ -2,16 +2,20 @@
     <div class="col-2"></div>
     <div class="col-8">
         <div class="card m-3">
-            <h4 class="card-body" style="font-weight: bold;font-size:25px;text-align: center;">Add Job</h4>
+            <h4 class="card-body" style="font-weight: bold;font-size:25px;text-align: center;">Create Job</h4>
             <div class="card-body">
-    
-                <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    
+
+                <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="organization" formControlName="organization"
-                                    placeholder="Enter organization">
+                                <input type="text" class="form-control" name="organization"
+                                    formControlName="organization" placeholder="Enter organization"
+                                    [ngClass]="{ 'is-invalid': submitted && f.organization.errors }" />
+                                <div *ngIf="submitted && f.organization.errors" class="invalid-feedback">
+                                    <div *ngIf="f.organization.errors.required">Organization name is required</div>
+                                    <div *ngIf="f.organization.errors.pattern">Only String accept here</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -19,34 +23,48 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <input type="date" class="form-control" name="date" formControlName="date"
-                                    placeholder="Select date">
+                                    placeholder="Select date"
+                                    [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
+                                <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                    <div *ngIf="f.date.errors.required">Created date is required</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-3">
                                 <input type="text" class="form-control" name="postion" formControlName="postion"
-                                    placeholder="Enter postion">
+                                    placeholder="Enter postion"
+                                    [ngClass]="{ 'is-invalid': submitted && f.postion.errors }" />
+                                <div *ngIf="submitted && f.postion.errors" class="invalid-feedback">
+                                    <div *ngIf="f.postion.errors.required">postion is required</div>
+                                    <div *ngIf="f.postion.errors.pattern">Only String accept here</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="organizationLogo" formControlName="organizationLogo"
-                                    placeholder="Enter image url">
+                                <input type="text" class="form-control" name="organizationLogo"
+                                    formControlName="organizationLogo" placeholder="Enter image url"
+                                    [ngClass]="{ 'is-invalid': submitted && f.organizationLogo.errors }" />
+                                <div *ngIf="submitted && f.organizationLogo.errors" class="invalid-feedback">
+                                    <div *ngIf="f.organizationLogo.errors.required">Organization logo url is required
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div><br>
-    
+
                     <div class="form-row">
-                        <button class="btn btn-danger mr-2"
-                            style="width: 20%;" routerLink="/admin/joblist">Cancel</button>
-                        <button class="btn btn-primary"  style="width: 20%;">Submit</button>
+                        <button class="btn btn-primary mr-2" style="width: 20%;">Submit</button>
+                        <button class="btn btn-secondary mr-2" style="width: 15%;" (click)="reset()">Reset</button>
+                        <button class="btn btn-danger mr-2" style="width: 15%;"
+                            routerLink="/admin/joblist">Cancel</button>
                     </div>
-    
                 </form>
             </div>
         </div>

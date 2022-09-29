@@ -10,26 +10,22 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./add-profile.component.css']
 })
 export class AddProfileComponent implements OnInit {
-
   constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) { }
-
   profileForm: any = FormGroup;
   submitted = false;
 
-
   ngOnInit() {
     this.profileForm = this.formBuilder.group({
-      firstName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
-      lastName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
-      location: ['',Validators.required],
-      mobile: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      location: ['', Validators.required],
+      mobile: ['', Validators.required],
       birthDate: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required]],
       organization: ['', [Validators.required]],
     });
   }
-
 
   get f() { return this.profileForm.controls; }
 

@@ -10,31 +10,31 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class JobListComponent implements OnInit {
 
-  constructor(private api:ApiService,private router:Router) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   filterTerm!: string;
-  jobs:Job[] = [];
+  jobs: Job[] = [];
   p: number = 1;
   total: number = 0;
 
-  ngOnInit(){
-   this.getAllJobs();
+  ngOnInit() {
+    this.getAllJobs();
   }
 
-  getAllJobs(){
+  getAllJobs() {
     this.api.AllJobs().subscribe(
-      response =>{
+      response => {
         this.jobs = response;
       }
     )
   }
 
-  goToEditProfile(){
+  goToEditProfile() {
     this.router.navigate(['/dashboard/updateprofile'])
   }
 
-  deleteJobs(jobid:any) {
-    if(confirm("Are you sure to delete " + jobid)) {
+  deleteJobs(jobid: any) {
+    if (confirm("Are you sure to delete " + jobid)) {
       this.api.deleteJob(jobid).subscribe(response => {
         location.reload();
       })
@@ -45,5 +45,5 @@ export class JobListComponent implements OnInit {
     this.p = event;
     this.getAllJobs();
   }
-  
+
 }

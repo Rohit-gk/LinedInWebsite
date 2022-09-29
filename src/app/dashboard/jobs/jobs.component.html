@@ -2,19 +2,11 @@
     <div class="w3-row">
         <div class="w3-col m3">
             <div class="w3-card w3-round w3-white">
-
                 <div>
                     <div class="w3-container w3-padding">
                         <h4 style="font-weight: bold;">People you may know</h4>
                     </div>
                     <ul class="w3-ul w3-hoverable w3-white">
-                        <li class="w3-padding-16">
-                            <img src="assets/profile1.jfif" alt="Image" class="w3-left w3-margin-right"
-                                style="width:70px;border-radius: 50%;">
-                            <span class="w3-large">Sagar Kopnar</span><br>
-                            <span>Angular Developer at IncubXperts</span>
-                            <button type="button" class="btn btn-primary btn-sm" style="width: 100%;">Connect</button>
-                        </li>
                         <li class="w3-padding-16">
                             <img src="assets/vedant.jfif" alt="Image" class="w3-left w3-margin-right"
                                 style="width:70px;border-radius: 50%;">
@@ -23,27 +15,33 @@
                             <button type="button" class="btn btn-primary btn-sm" style="width: 100%;">Connect</button>
                         </li>
                         <li class="w3-padding-16">
-                            <img src="assets/upro.jpg" alt="Image" class="w3-left w3-margin-right"
+                            <img src="assets/vedant.jfif" alt="Image" class="w3-left w3-margin-right"
+                                style="width:70px;border-radius: 50%;">
+                            <span class="w3-large">Sagar Kopnar</span><br>
+                            <span>Angular Developer at IncubXperts</span>
+                            <button type="button" class="btn btn-primary btn-sm" style="width: 100%;">Connect</button>
+                        </li>
+                        <li class="w3-padding-16">
+                            <img src="assets/vedant.jfif" alt="Image" class="w3-left w3-margin-right"
                                 style="width:70px;border-radius: 50%;">
                             <span class="w3-large">Shardul Thakur</span><br>
                             <span>Angular Developer at IncubXperts</span>
                             <button type="button" class="btn btn-primary btn-sm" style="width: 100%;">Connect</button>
                         </li>
-                        <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-                            <img src="assets/profile1.jfif" alt="Image" class="w3-left w3-margin-right"
+                        <li class="w3-padding-16">
+                            <img src="assets/vedant.jfif" alt="Image" class="w3-left w3-margin-right"
                                 style="width:70px;border-radius: 50%;">
                             <span class="w3-large">Nitin Thate</span><br>
-                            <span>CRM Developer at IncubXperts</span>
-                            <button type="button" class="btn btn-primary btn-sm" style="width: 100%;">Connect</button>
-                        </li>
-                        <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-                            <img src="assets/profile1.jfif" alt="Image" class="w3-left w3-margin-right"
-                                style="width:70px;border-radius: 50%;">
-                            <span class="w3-large">Parth Pujari</span><br>
                             <span>Angular Developer at IncubXperts</span>
                             <button type="button" class="btn btn-primary btn-sm" style="width: 100%;">Connect</button>
                         </li>
-                        
+                        <li class="w3-padding-16">
+                            <img src="assets/vedant.jfif" alt="Image" class="w3-left w3-margin-right"
+                                style="width:70px;border-radius: 50%;">
+                            <span class="w3-large">Vedant Mishra</span><br>
+                            <span>Angular Developer at IncubXperts</span>
+                            <button type="button" class="btn btn-primary btn-sm" style="width: 100%;">Connect</button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -53,37 +51,36 @@
         <!-- part 2 -->
 
         <div class="w3-col m7">
-
             <div class="w3-row-padding">
                 <div class="w3-col m12">
                     <div class="w3-card w3-round w3-white">
-                        <div class="w3-container w3-padding">
+                        <div class="w3-container w3-padding input-icons d-flex" style="justify-content: right;">
                             <h6 class="w3-opacity"></h6>
-                            <input class="form-control"
-                                style="border: 1px solid gray; width: 100%;height: 40px;"
-                                [(ngModel)]="filterTerm"
-                                placeholder="Search jobs...">
+                            <i class="fa fa-search icon"></i>
+                            <input class="form-control" style="border: 1px solid gray; width: 100%;height: 40px;"
+                                [(ngModel)]="filterTerm" placeholder="Serach jobs...">
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="w3-container w3-card w3-white w3-round w3-margin">
-
-                <div class="w3-row-padding w3-padding-32" style="margin:0 -16px" >
-                    <div class="w3-third w3-margin-bottom" *ngFor="let job of jobs.reverse() | filter: filterTerm | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
-                        <img src="{{job.organizationLogo}}" alt="" style="width:50px;height: 50px;" class="w3-hover-opacity">
+                <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+                    <div class="w3-third w3-margin-bottom"
+                        *ngFor="let job of jobs.reverse() | filter: filterTerm | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }">
+                        <img src="{{job.organizationLogo}}" alt="" style="width:50px;height: 50px;"
+                            class="w3-hover-opacity">
                         <div class="w3-container w3-white">
                             <p><b>{{job.organization}}</b></p>
                             <p class="w3-opacity">{{job.date | date:'short'}}</p>
                             <p>{{job.postion}}</p>
-                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
+                            <button class="btn btn-secondary" style="width: 100%;"
+                                (click)="ApplyJob(job.jobId)">Apply</button>
                         </div>
                     </div>
                 </div>
                 <pagination-controls class="pagination" (pageChange)="pageChangeEvent($event)"></pagination-controls>
             </div>
-            
         </div>
 
         <!-- 3rd part start -->
@@ -93,7 +90,8 @@
                 <img src="assets/cardback.jfif" alt="Denim Jeans" style="width:100%;height: 200px;">
                 <h2 style="text-align: center;">IncubXperts Pvt.Ltd</h2>
                 <p style="text-align: center;">?Looking for talent</p>
-                <p style="text-align: center;"><button class="btn btn-primary" style="width: 90%;">POST A JOB</button></p><br>
+                <p style="text-align: center;"><button class="btn btn-primary" style="width: 90%;">POST A JOB</button>
+                </p><br>
             </div>
             <br>
 
@@ -129,37 +127,3 @@
 
     </div>
 </div>
-
-
-
-<!-- <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/scl.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>SCL</b></p>
-                            <p class="w3-opacity">23-09-2022</p>
-                            <p>Junior UX Designer</p>
-                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
-                        </div>
-                    </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/incub.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>IncubXperts</b></p>
-                            <p class="w3-opacity">23-09-2022</p>
-                            <p>Junior UX Designer</p>
-                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
-                        </div>
-                    </div>
-
-                    <div class="w3-third w3-margin-bottom">
-                        <img src="assets/scl.png" alt="New York" style="width:50px;height: 50px;" class="w3-hover-opacity">
-                        <div class="w3-container w3-white">
-                            <p><b>SCL</b></p>
-                            <p class="w3-opacity">23-09-2022</p>
-                            <p>Junior UX Designer</p>
-                            <button class="btn btn-secondary" style="width: 100%;">Apply</button>
-                        </div>
-                    </div>
-                </div> -->

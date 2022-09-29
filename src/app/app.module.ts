@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {NgToastModule} from 'ng-angular-popup';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,5 +23,6 @@ import {NgToastModule} from 'ng-angular-popup';
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

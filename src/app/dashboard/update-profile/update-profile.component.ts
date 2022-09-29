@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -11,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class UpdateProfileComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private router:Router,private api:ApiService,private activatedRoute : ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder,private router:Router,private api:ApiService,private activatedRoute : ActivatedRoute,private toaster:NgToastService) { }
 
   ngForm: any = FormGroup;
   submitted = false;
@@ -31,7 +32,6 @@ export class UpdateProfileComponent implements OnInit {
       address: ['', [Validators.required]],
       organization: ['', [Validators.required]],
     });
-    
 
     this.api.AllProfiles().subscribe((getProfiledata) =>{
       this.profileList = getProfiledata;
@@ -84,11 +84,22 @@ export class UpdateProfileComponent implements OnInit {
 
 
   onSubmit() {
-    
     this.api.updateProfile(this.ngForm.value).subscribe(() => {
-        this.router.navigate(['/dashboard/profile'])   
+        this.router.navigate(['/dashboard/profile'])
+        this.toaster.success({
+          summary: 'Success',
+          detail: 'Profile Updated Successfully',
+          duration: 3000,
+
+        });   
       },
       (err) => {
+        this.toaster.error({
+          summary: 'Failed',
+          detail: 'Profile Updated Failed',
+          duration: 3000,
+
+        });   
       }
     );
   }

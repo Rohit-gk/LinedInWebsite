@@ -1,42 +1,24 @@
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:10px">
     <div class="w3-row">
         <div class="w3-col m3">
-
-            <div class="w3-card w3-round w3-white">
-
-                <p class="myNetwork">Manage my network</p>
-                <div class="row">
-                    <div class="col-6">
-                        <hr>
-                        <p class="numbers">87</p>
-                        <hr>
-                        <p class="numbers">987</p>
-                        <hr>
-                        <p class="numbers">237</p>
-                        <hr>
-                        <p class="numbers">4</p>
-                        <hr>
-                        <p class="numbers">86</p>
-                        <hr>
-                        <p class="numbers">3</p>
-                    </div>
-                    <div class="col-6">
-                        <hr>
-                        <p>Connections</p>
-                        <hr>
-                        <p>Contacts</p>
-                        <hr>
-                        <p>People I Follow</p>
-                        <hr>
-                        <p>Groups</p>
-                        <hr>
-                        <p>Page</p>
-                        <hr>
-                        <p>HashTag</p>
+            <div class="w3-container w3-card w3-white w3-round w3-margin">
+                <p class="myNetwork">Friend Requests</p>
+                <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+                    <div class="w1-third w1-margin-bottom" *ngFor="let request of myrequest">
+                        <img src="assets/pp.jfif" alt="" class="w3-hover-opacity">
+                        <div class="w1-container w1-white">
+                            <p><b>{{request.name}}</b></p>
+                            <p>{{request.postion}}</p>
+                            <button class="btn btn-success mr-1" style="width: 49%;"
+                                (click)="AcceptOrRejectRequest(request.requestId,'true')">Accept
+                            </button>
+                            <button class="btn btn-danger" style="width: 49%;"
+                                (click)="AcceptOrRejectRequest(request.requestId,'false')">Reject
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <br>
         </div>
 
         <!-- part 2 -->
@@ -44,38 +26,16 @@
         <div class="w3-col m9">
 
             <div class="w3-container w3-card w3-white w3-round w3-margin">
-                <p class="myNetwork">Invitations</p>
-                <div class="w3-row-padding w3-padding-32" >
-                    <div class="w3-row-padding w3-padding-32" style="margin:0 -16px" >
-                        <div class="w3-third w3-margin-bottom" *ngFor="let request of myrequest">
-                            <img src="assets/pro1.jfif" alt="New York" class="w3-hover-opacity">
-                            <div class="w3-container w3-white">
-                                <p><b>{{request.name}}</b></p>
-                                <p>{{request.postion}}</p>
-                                <button class="btn btn-success mr-1" style="width: 49%;" 
-                                    (click)="AcceptOrRejectRequest(request.requestId,'true')">Accept
-                                </button>
-                                <button class="btn btn-danger" style="width: 49%;"
-                                    (click)="AcceptOrRejectRequest(request.requestId,'false')">Reject
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <div class="w3-container w3-card w3-white w3-round w3-margin">
                 <p class="myNetwork">More Suggestions for you</p>
-                <div class="w3-row-padding w3-padding-32" >
-                    <div class="w3-row-padding w3-padding-32" style="margin:0 -16px" >
+                <div class="w3-row-padding w3-padding-32">
+                    <div class="w3-row-padding w3-padding-32" style="margin:0 -16px;">
                         <div class="w3-third w3-margin-bottom" *ngFor="let connection of connections">
-                            <img src="assets/pro1.jfif" alt="New York" class="w3-hover-opacity">
+                            <img id="logo" src="{{connection.photo}}"
+                                style="border-radius: 60%;width: 250px;height: 150px;;" alt="New York"
+                                class="w3-hover-opacity">
                             <div class="w3-container w3-white">
-                                <p><b>{{connection.name}}</b></p>
-                                <p>{{connection.postion}}</p>
+                                <p style="text-align: center;"><b>{{connection.name | titlecase}}</b></p>
+                                <p style="text-align: center;">{{connection.postion}}</p>
                                 <button class="btn btn-primary" style="width: 100%;"
                                     (click)="SendFriendRequests(connection.userId)"><i
                                         class="fa fa-user"></i>&nbsp;Follow</button>
@@ -84,8 +44,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>

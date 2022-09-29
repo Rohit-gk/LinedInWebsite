@@ -5,13 +5,8 @@
         </div>
         <div class="col-6">
             <div>
-                <input
-                type="text"
-                class="form-control"
-                placeholder="Search Posts..."
-                [(ngModel)]="filterTerm"
-              />
-              </div>
+                <input type="text" class="form-control" placeholder="Search Posts..." [(ngModel)]="filterTerm" />
+            </div>
         </div>
     </div>
 
@@ -25,17 +20,17 @@
                 <th>Action</th>
             </tr>
         </thead>
-
-        <!-- | filter: filterTerms -->
         <tbody>
-            <tr *ngFor="let post of posts.reverse() | filter: filterTerm | paginate: { itemsPerPage: 4, currentPage: p, totalItems: total }">
+            <tr
+                *ngFor="let post of posts.reverse() | filter: filterTerm | paginate: { itemsPerPage: 4, currentPage: p, totalItems: total }">
                 <td>
                     <img src="{{post.imageUrl}}" alt="" style="height: 50px;width:50px">
                 </td>
                 <td>{{post.title}}</td>
                 <td>{{post.content}}</td>
                 <td>{{post.author}}</td>
-                <td><img src="assets/edit.png" style="height: 25px;margin-left: 30px;" alt=""  (click)="goToPostEdit(post.id)" ></td>
+                <td><img src="assets/edit.png" style="height: 25px;margin-left: 30px;" alt=""
+                        (click)="goToPostEdit(post.id)"></td>
                 <td>
                     <img src="assets/delete.png" style="height: 25px;" alt="" (click)="deletePost(post.id)">
                 </td>

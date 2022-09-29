@@ -21,7 +21,7 @@ import { JobListComponent } from './job-list/job-list.component';
     UsersProfilesComponent,
     AdminDashboardComponent,
     AddJobComponent,
-    JobListComponent
+    JobListComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,7 @@ import { JobListComponent } from './job-list/job-list.component';
     AdminRoutingModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class AdminModule { }

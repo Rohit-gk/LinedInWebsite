@@ -234,3 +234,8 @@ a:last-child{
 transform: scale(1, 1);
 text-indent: 0;
 }
+
+.birthdate{
+  font-weight: bold;
+  color: #0083FD;
+}

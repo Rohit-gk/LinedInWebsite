@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
        }
         localStorage.setItem("token:", res.token);
-        localStorage.setItem("role:", res.role);
+        localStorage.setItem("role:", res.role); 
 
         let role = this.token.getRole();
         role === 'Admin'
@@ -67,31 +67,3 @@ export class LoginComponent implements OnInit {
   }
   
 }
-
-
-//   this.submitted = true;
-  //   this.isSignUpFailed = false;
-
-  //   this.api.login(this.loginForm.value).subscribe(val => {
-  //       this.token.setToken(val.result)
-  //        this.isSuccessful = true;
-  //       setTimeout(() => {
-  //         this.router.navigate(['dashboard/posts'])
-  //       }, 2000);
-  //   },
-  //     error => {
-  //       this.message = " Invalid username and password please try again...";
-  //       this.isSignUpFailed = true;
-  //     }
-  //   );
-  // }
-
-
-
-
-
-
-
-
-
-

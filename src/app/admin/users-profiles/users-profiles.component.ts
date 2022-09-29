@@ -10,31 +10,31 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class UsersProfilesComponent implements OnInit {
 
-  constructor(private api:ApiService,private router:Router) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   filterTerm!: string;
-  profiles:Profile[] = [];
+  profiles: Profile[] = [];
   p: number = 1;
   total: number = 0;
 
-  ngOnInit(){
-   this.getProfiles();
+  ngOnInit() {
+    this.getProfiles();
   }
 
-  getProfiles(){
+  getProfiles() {
     this.api.AllProfiles().subscribe(
-      response =>{
+      response => {
         this.profiles = response;
       }
     )
   }
 
-  goToEditProfile(){
+  goToEditProfile() {
     this.router.navigate(['/dashboard/updateprofile'])
   }
 
-  deleteProfile(userid:any) {
-    if(confirm("Are you sure to delete " + userid)) {
+  deleteProfile(userid: any) {
+    if (confirm("Are you sure to delete " + userid)) {
       this.api.deleteProfile(userid).subscribe(response => {
         location.reload();
       })
@@ -45,5 +45,5 @@ export class UsersProfilesComponent implements OnInit {
     this.p = event;
     this.getProfiles();
   }
-  
+
 }

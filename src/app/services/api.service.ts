@@ -106,8 +106,15 @@ export class ApiService {
     return this.http.delete(`${environment.baseApiUrl}/Job/${jobid}`,)
   }
 
-  // deletePost(id: any): Observable<any> {
-  //   return this.http.delete(`${environment.baseApiUrl}/Post/${id}`,)
-  // }
+  JobApply(data: any){debugger
+    const headers = {Authorization : `Bearer ${this.tokenService.getToken()}`}
+    return this.http.post(`${environment.baseApiUrl}/JobApplier`, data,{headers});
+  }
 
+  UsersLoginProfileData(){
+    const headers = {Authorization : `Bearer ${this.tokenService.getToken()}`}
+    return this.http.get<any>(
+      `${environment.baseApiUrl}/UserProfile/GetUserProfile`,{headers}
+    );
+  }
 }

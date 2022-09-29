@@ -20,6 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { UpdatePostComponent } from './update-post/update-post.component';
 import { ChatBoxComponent } from './chat-box/chat-box.component';
+import { CommentBoxComponent } from './comment-box/comment-box.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ChatBoxComponent } from './chat-box/chat-box.component';
     CreatePostComponent,
     ProfileListComponent,
     UpdatePostComponent,
-    ChatBoxComponent
+    ChatBoxComponent,
+    CommentBoxComponent
   ],
   imports: [
     CommonModule,

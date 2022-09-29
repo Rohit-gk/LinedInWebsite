@@ -2,18 +2,12 @@
     <div class="row">
         <div class="col-6">
             <h2>All Profiles</h2><br>
-
-    
         </div>
         <div class="col-6">
-            <div>
-                <input
-                type="text"
-                class="form-control"
-                placeholder="Search Profiles..."
-                [(ngModel)]="filterTerm"
-              />
-              </div>
+            <div class="input-icons d-flex" style="justify-content: right;">
+                <i class="fa fa-search icon"></i>
+                <input type="text" class="form-control" placeholder="Search Profiles..." [(ngModel)]="filterTerm" />
+            </div>
         </div>
     </div>
 
@@ -32,7 +26,8 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let profile of profiles | filter: filterTerm | paginate: { itemsPerPage: 4, currentPage: p, totalItems: total }">
+            <tr
+                *ngFor="let profile of profiles | filter: filterTerm | paginate: { itemsPerPage: 4, currentPage: p, totalItems: total }">
                 <td><img src="{{profile.location}}" alt="" height="50" width="70"></td>
                 <td>{{profile.firstName}}</td>
                 <td>{{profile.lastName}}</td>
@@ -40,7 +35,7 @@
                 <td>{{profile.email}}</td>
                 <td>{{profile.address}}</td>
                 <td>{{profile.organization}}</td>
-                
+
                 <td>
                     <img src="assets/delete.png" alt="" height="25" (click)="deleteProfile(profile.userId)">
                 </td>

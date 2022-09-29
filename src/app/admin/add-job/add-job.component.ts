@@ -11,23 +11,29 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class AddJobComponent implements OnInit {
 
-  constructor(private api:ApiService,private formBuilder:FormBuilder,private router:Router,private toaster:NgToastService) { }
+  constructor(private api: ApiService, private formBuilder: FormBuilder, private router: Router, private toaster: NgToastService) { }
 
-  profileForm: any = FormGroup;
+  jobForm: any = FormGroup;
+  submitted = false;
 
-  ngOnInit(){
-    this.profileForm = this.formBuilder.group({
+  ngOnInit() {
+    this.jobForm = this.formBuilder.group({
 
-      organization: ['', [Validators.required]],
+      organization: ['', Validators.required],
       date: ['', [Validators.required]],
-      postion: ['', [Validators.required]],
+      postion: ['', Validators.required],
       organizationLogo: ['', [Validators.required]],
-    
     });
   }
 
+  get f() { return this.jobForm.controls; }
+
   onSubmit() {
-    this.api.addJob(this.profileForm.value).subscribe(
+    this.submitted = true;
+    if (this.jobForm.invalid) {
+      return;
+    }
+    this.api.addJob(this.jobForm.value).subscribe(
       data => {
         this.router.navigate(['admin/joblist']);
         this.toaster.success({
@@ -38,6 +44,10 @@ export class AddJobComponent implements OnInit {
         });
       }
     )
+  }
+
+  reset() {
+    this.jobForm.reset();
   }
 
 }
