@@ -13,8 +13,13 @@ export class MynetworkComponent implements OnInit {
   public request: any = {};
 
   constructor(private api: ApiService, private toaster: NgToastService) { }
+
   myrequest: MyRequest[] = [];
   connections: Connection[] = [];
+  filterTerm!: string;
+  p: number = 1;
+  total: number = 0;
+
   ngOnInit() {
     this.AllConnections();
     this.MyInvitations();
@@ -63,6 +68,12 @@ export class MynetworkComponent implements OnInit {
         console.log("Request", response);
       }
     )
+  }
+
+  
+  pageChangeEvent(event: number) {
+    this.p = event;
+    this.AllConnections();
   }
 }
 

@@ -17,6 +17,7 @@ export class PostComponent implements OnInit {
 
   post: Post[] = [];
   profiles: Profile[] = [];
+  userProfiles: any = {};
 
 
   posts: Post | undefined;
@@ -24,6 +25,7 @@ export class PostComponent implements OnInit {
   ngOnInit() {
     this.getProfiles();
     this.getAllPosts();
+    this.SingleUserProfileData();
   }
 
   getAllPosts() {
@@ -74,4 +76,12 @@ export class PostComponent implements OnInit {
     this.router.navigate(['/dashboard/commentbox'])
   }
 
+  SingleUserProfileData() {
+    this.api.UsersLoginProfileData().subscribe(
+      response => {
+        this.userProfiles = response;
+        console.log(this.userProfiles)
+
+      })
+  }
 }

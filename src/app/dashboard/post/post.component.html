@@ -1,12 +1,12 @@
 <div class="w3-container w3-content containerPost">
     <div class="w3-row">
         <div class="w3-col m3">
-            <div class="w3-card w3-round w3-white" *ngFor="let profile of profiles;">
+            <div class="w3-card w3-round w3-white">
                 <div class="w3-container">
                     <h4 class="w3-center">My Profile</h4>
-                    <p class="w3-center"><img src="{{profile.location}}" class="w3-circle profileImg1" alt="Avatar"></p>
+                    <p class="w3-center"><img src="{{userProfiles.profileImage}}" class="w3-circle profileImg1" alt="Avatar"></p>
                     <p class="welcomeMsg">Welcome!</p>
-                    <h3 class="name">{{profile.firstName}} {{profile.lastName}}</h3>
+                    <h3 class="name">{{userProfiles.name | titlecase}}</h3>
                     <p><button class="w3-button w3-block w3-theme-l4" routerLink="/dashboard/profile">View Full
                             Profile</button></p>
                 </div>
@@ -54,9 +54,9 @@
                         <p class="welcomeMsg">Welcome!</p>
                         <h3 class="name">LinkedIn Post</h3>
                         <p style="text-align: center;">
-                            <button class="btn btn-outline-primary" routerLink="/dashboard/addprofile">
+                            <!-- <button class="btn btn-outline-primary" routerLink="/dashboard/addprofile">
                                 Create profile
-                            </button>
+                            </button> -->
                         </p>
                     </div>
                 </div>

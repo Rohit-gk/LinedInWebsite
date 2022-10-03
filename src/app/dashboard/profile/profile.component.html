@@ -1,19 +1,19 @@
 <div class="w3-container w3-content profileContainer">
   <div class="row">
-    <div class="container d-flex" *ngFor="let profile of profiles;">
+    <div class="container d-flex">
       <div class="user-image">
-        <img src="{{profile.location}}" alt="this image contains user-image"><br>
-        <i class="fa-sharp fa-solid fa-pen mr-2" (click)="editProfile(profile.userId)"></i>
-        <i class="fa-sharp fa-solid fa-trash" (click)="deleteProfile(profile.userId)"></i>
+        <img src="{{userProfiles.profileImage}}" alt="this image contains user-image"><br>
+        <i class="fa-sharp fa-solid fa-pen mr-2" (click)="editProfile(userProfiles.id)"></i>
+        <!-- <i class="fa-sharp fa-solid fa-trash" (click)="deleteProfile(userProfiles.id)"></i> -->
       </div>
 
       <div class="content">
-        <h3 class="name">{{profile.firstName}} {{profile.lastName}}</h3>
-        <p class="username">{{profile.email}}</p>
-        <p class="organization">{{profile.organization}}</p>
-        <p>{{profile.address}}</p><br>
-        <p>{{profile.mobile}}</p>
-        <p class="birthdate">{{profile.birthDate | date : 'dd/MM/yyyy'}}</p>
+        <h3 class="name">{{userProfiles.name }}</h3><br>
+        <p class="username">{{userProfiles.email}}</p><br>
+        <p class="organization">{{userProfiles.organization}}</p>
+        <p>{{userProfiles.headline}}</p><br>
+        <!-- <p>{{userProfiles.phoneNumber}}</p> -->
+        <p class="birthdate">{{userProfiles.birthDate}}</p>
 
 
         <div class="links">
@@ -36,7 +36,7 @@
         </div>
 
         <p class="details">
-          Software Engineer
+          {{userProfiles.currentPostion}}
         </p>
 
         <a class="effect effect-4" routerLink="/dashboard/chatbox">

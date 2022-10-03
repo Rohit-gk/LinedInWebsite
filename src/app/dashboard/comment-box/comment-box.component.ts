@@ -8,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class CommentBoxComponent implements OnInit {
 
   comment = "";
-  postComment : any = [];
+  postComment: any = [];
   constructor() { }
 
-  ngOnInit(){
-   this.post();
+  ngOnInit() {
+    this.post();
   }
 
-  post(){
-   this.postComment.push(this.comment);
-   this.comment = ""; 
+  post() {
+    this.postComment.push(this.comment);
+    this.comment = "";
 
   }
 

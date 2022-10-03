@@ -8,9 +8,10 @@
             <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
                 <div class="mb-3">
                     <input type="text" class="form-control" name="title" formControlName="title"
-                        placeholder="Enter title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+                        placeholder="Enter title" maxlength="20" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
                     <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
                         <div *ngIf="f.title.errors.required">Title is required</div>
+                        <div *ngIf="f.firstName.errors.pattern">Allow only 15 chracters here</div>
                     </div>
                 </div>
                 <div class="mb-3">

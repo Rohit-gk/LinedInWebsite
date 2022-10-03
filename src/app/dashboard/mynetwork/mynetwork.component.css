@@ -73,10 +73,16 @@
 
 .w1-container.w1-white {
   margin-bottom: 50px;
+  text-align: center;
+  
 }
 
 #logo {
   height: 100px;
   width: 200px;
   overflow: hidden;
+}
+.pagination {
+  justify-content: end;
+  text-align: end;
 }

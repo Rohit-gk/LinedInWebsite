@@ -14,7 +14,7 @@ export class JobsComponent implements OnInit {
   constructor(private api: ApiService, private toaster: NgToastService) { }
   filterTerm!: string;
   jobs: Job[] = [];
-  jobsApply: JobApplys[] = [];
+  job = {};
   p: number = 1;
   total: number = 0;
 
@@ -30,10 +30,11 @@ export class JobsComponent implements OnInit {
     )
   }
 
-  ApplyJob(applyId: any) {
-    this.api.JobApply(applyId).subscribe(
-      response => {
-        // this.jobsApply = response;
+  ApplyJob(jobId: any) {
+    this.api.JobApply(jobId).subscribe(
+      res =>{
+        console.log(res);
+        this.job = res;
         // this.toaster.success({
         //   summary: 'Success',
         //   detail: 'Job Applied Successfully',

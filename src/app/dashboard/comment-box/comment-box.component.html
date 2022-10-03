@@ -3,8 +3,8 @@
     <hr />
     <div class="form-group">
         <form>
-            <textarea class="form-control" rows="5" placeholder="Your Comment Please....."
-            [(ngModel)]="comment" [ngModelOptions]="{standalone: true}"></textarea>
+            <textarea class="form-control" rows="5" placeholder="Your Comment Please....." [(ngModel)]="comment"
+                [ngModelOptions]="{standalone: true}"></textarea>
             <br />
             <button class="btn btn-success pull-right" (click)="post()">Comment</button>
             <br />
@@ -12,12 +12,11 @@
         </form>
     </div>
 
-        <div class="row"  *ngFor="let comments of postComment">
-                <div style="text-align: center;">
-                    <span class="glyphicon glyphicon-trash" style="float:left">
-                        {{comments}}
-                    </span>
-                </div>
+    <div class="row" *ngFor="let comments of postComment">
+        <div style="text-align: center;">
+            <span class="glyphicon glyphicon-trash" style="float:left">
+                {{comments}}
+            </span>
         </div>
-
+    </div> 
 </div>

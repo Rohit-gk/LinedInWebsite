@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserProfile } from 'src/app/Models/user-profile.model';
 import { Profile } from 'src/app/Models/view.profile.models';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -12,18 +13,11 @@ export class ProfileComponent implements OnInit {
 
   constructor(private api: ApiService, private router: Router) { }
 
-  profiles: Profile[] = [];
+  userProfiles: any = {};
 
   ngOnInit() {
-    this.getProfiles();
-  }
+    this.SingleUserProfileData();
 
-  getProfiles() {
-    this.api.AllProfiles().subscribe(
-      response => {
-        this.profiles = response;
-      }
-    )
   }
 
   deleteProfile(userid: any) {
@@ -39,6 +33,14 @@ export class ProfileComponent implements OnInit {
   }
 
   addProfilePicture() {
-
   }
+
+  SingleUserProfileData() {
+    this.api.UsersLoginProfileData().subscribe(
+      response => {
+        this.userProfiles = response;
+        console.log(this.userProfiles)
+      })
+  }
+
 }

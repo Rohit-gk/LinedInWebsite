@@ -22,40 +22,26 @@ export class UpdateProfileComponent implements OnInit {
 
   ngOnInit(){
     this.ngForm = this.formBuilder.group({
-      userId: [''],
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      location: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      birthDate: ['', [Validators.required]],
+      id: [''],
+      name: ['', [Validators.required]],
       email: ['', [Validators.required]],
       address: ['', [Validators.required]],
       organization: ['', [Validators.required]],
+      profileImage: ['', [Validators.required]],
+      
     });
 
-    this.api.AllProfiles().subscribe((getProfiledata) =>{
-      this.profileList = getProfiledata;
+    this.api.UsersLoginProfileData().subscribe((getProfiles) =>{debugger
+      this.profileList = getProfiles;
 
       for (let i=0; i< this.profileList.length; i++){
 
-        if (this.url_id == this.profileList[i].userid) {
-          this.ngForm.controls['userId'].patchValue(this.profileList[i].userId);
+        if (this.url_id == this.profileList[i].id) {
+          this.ngForm.controls['id'].patchValue(
+            this.profileList[i].id);
 
-          this.ngForm.controls['firstName'].patchValue(
-            this.profileList[i].firstName
-          );
-          
-          this.ngForm.controls['lastName'].patchValue(
-            this.profileList[i].lastName
-          );
-          this.ngForm.controls['location'].patchValue(
-            this.profileList[i].location
-          );
-          this.ngForm.controls['mobile'].patchValue(
-            this.profileList[i].mobile
-          );
-          this.ngForm.controls['birthDate'].patchValue(
-            this.profileList[i].birthDate
+          this.ngForm.controls['name'].patchValue(
+            this.profileList[i].name
           );
           this.ngForm.controls['email'].patchValue(
             this.profileList[i].email
@@ -66,14 +52,14 @@ export class UpdateProfileComponent implements OnInit {
           this.ngForm.controls['organization'].patchValue(
             this.profileList[i].organization
           );
-          this.ngForm.controls['uploadCV'].patchValue(
-            this.profileList[i].uploadCV
+          this.ngForm.controls['profileImage'].patchValue(
+            this.profileList[i].profileImage
           );
         }
       }
     });
 
-    this.url_id = this.activatedRoute.snapshot.paramMap.get('userid');
+    this.url_id = this.activatedRoute.snapshot.paramMap.get('id');
   }
   
   get f() { return this.ngForm.controls; }
@@ -84,7 +70,7 @@ export class UpdateProfileComponent implements OnInit {
 
 
   onSubmit() {
-    this.api.updateProfile(this.ngForm.value).subscribe(() => {
+    this.api.updateUserProfile(this.ngForm.value).subscribe(() => {
         this.router.navigate(['/dashboard/profile'])
         this.toaster.success({
           summary: 'Success',

@@ -13,8 +13,10 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router:Router,private token:TokenService,private api:ApiService) { }
 
+  userProfiles: any = {};
 
   ngOnInit(){
+    this.SingleUserProfileData();
   }
 
   goToViewProfilePage(){
@@ -28,6 +30,14 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
+  SingleUserProfileData() {
+    this.api.UsersLoginProfileData().subscribe(
+      response => {
+        this.userProfiles = response;
+        console.log(this.userProfiles)
+
+      })
+  }
   
 
 }

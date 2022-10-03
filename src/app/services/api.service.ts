@@ -106,9 +106,9 @@ export class ApiService {
     return this.http.delete(`${environment.baseApiUrl}/Job/${jobid}`,)
   }
 
-  JobApply(data: any){debugger
+  JobApply(jobId: any){debugger
     const headers = {Authorization : `Bearer ${this.tokenService.getToken()}`}
-    return this.http.post(`${environment.baseApiUrl}/JobApplier`, data,{headers});
+    return this.http.post(`${environment.baseApiUrl}/JobApplier`, jobId, {headers});
   }
 
   UsersLoginProfileData(){
@@ -116,5 +116,10 @@ export class ApiService {
     return this.http.get<any>(
       `${environment.baseApiUrl}/UserProfile/GetUserProfile`,{headers}
     );
+  }
+
+  updateUserProfile(data: any): Observable<any> {
+    const headers = {Authorization : `Bearer ${this.tokenService.getToken()}`}
+    return this.http.put(`${environment.baseApiUrl}/UserProfile`, data,{headers});
   }
 }
