@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseApiUrl:"https://localhost:44329/api"
+  // baseApiUrl:"https://localhost:44329/api"
+  baseApiUrl:"https://linkedinportal.azurewebsites.net/api"
 };
 
 /*

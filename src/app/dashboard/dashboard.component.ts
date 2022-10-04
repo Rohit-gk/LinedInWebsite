@@ -11,19 +11,19 @@ import { TokenService } from '../services/token.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router:Router,private token:TokenService,private api:ApiService) { }
+  constructor(private router: Router, private token: TokenService, private api: ApiService) { }
 
   userProfiles: any = {};
 
-  ngOnInit(){
+  ngOnInit() {
     this.SingleUserProfileData();
   }
 
-  goToViewProfilePage(){
+  goToViewProfilePage() {
     this.router.navigate(['dashboard/profile'])
   }
 
-  logout(){
+  logout() {
     this.token.removeToken();
     this.token.isLoggedIn.next(false);
     localStorage.clear();
@@ -38,6 +38,4 @@ export class DashboardComponent implements OnInit {
 
       })
   }
-  
-
 }
