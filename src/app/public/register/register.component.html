@@ -7,15 +7,15 @@
             <a class="close" href="/">×</a>
         </h2>
         <div class="your-input">
-            <div class="input">
+            <div class="input mb-4">
                 <input type="text" name="name" id="name" formControlName="name" required
                     [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
                 <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
                     <div *ngIf="f.name.errors.required">First and Last name is required</div>
                 </div>
                 <label for="name">Name</label>
-            </div><br>
-            <div class="input">
+            </div>
+            <div class="input mb-4">
                 <input type="text" name="username" id="username" formControlName="username" required
                     [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                 <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -24,8 +24,8 @@
                 <label for="username">
                     Username
                 </label>
-            </div><br>
-            <div class="input">
+            </div>
+            <div class="input mb-4">
                 <input type="text" name="mobile" id="mobile" formControlName="mobile" required
                     [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" maxlength="10" />
                 <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
@@ -35,8 +35,8 @@
                 <label for="mobile">
                     Mobile
                 </label>
-            </div><br>
-            <div class="input">
+            </div>
+            <div class="input mb-4">
                 <input type="text" name="email" id="email" formControlName="email" required
                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -46,8 +46,8 @@
                 <label for="email">
                     Email
                 </label>
-            </div><br>
-            <div class="input">
+            </div>
+            <div class="input mb-4">
                 <input type="password" name="password" id="password" formControlName="password" required
                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -58,7 +58,7 @@
                 <label for="password">
                     Password
                 </label>
-            </div><br>
+            </div>
         </div>
         <button (click)="onSubmit()">Register</button>
 

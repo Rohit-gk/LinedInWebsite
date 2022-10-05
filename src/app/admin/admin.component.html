@@ -1,23 +1,17 @@
-<nav class="gradient navbar navbar-expand-sm navbar-dark fixed-top">
-    <a class="navbar-brand" routerLink="admindashboard">Admin Dashboard</a>
-    <ul class="navbar-nav">
-        <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="usersprofile">Profile</a>
-        </li> -->
-        <li class="nav-item">
-            <a class="nav-link" routerLink="userspost">Posts</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="joblist">JobList</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="addjob">CreateJob</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" style="cursor: pointer;" (click)="logout()">Logout</a>
-        </li>
-    </ul>
-</nav>
-<br><br><br>
-
-<router-outlet></router-outlet>
+<header>
+    <div class="container-fluid container-nav">
+      <div class="titles">
+        <h1>Admin Dashboard</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a routerLink="userspost">Posts</a></li>
+          <li><a routerLink="joblist">JobList</a></li>
+          <li><a routerLink="addjob">CreateJob</a></li>
+          <li><a style="cursor: pointer;" (click)="logout()">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <br>
+  <router-outlet></router-outlet>

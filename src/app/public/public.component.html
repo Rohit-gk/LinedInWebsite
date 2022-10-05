@@ -1,38 +1,20 @@
-<div class="scroll">
-  <nav class="navbar navbar-expand-lg navbar-light bg-gray">
-    <a class="navbar-brand" href="#">
-      <img class="img" src="assets/linkedin-logo.png" alt="" style="width: 177px;">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
-      aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav mr-auto">
-
-        <li class="heading">Welcome to LinkedIn</li>
-
-        <li class="loginclass nav-item">
-          <button class="color btn btn-outline-primary nav-link" routerLink="/login">Login</button>
-        </li>
-        <li class="nav-item ml-3">
-          <button class="btn btn-outline-secondary nav-link" routerLink="/register">Register</button>
-        </li>
-      </ul>
+<header>
+  <div class="container-fluid container-nav">
+    <div class="titles">
+      <h1>Welcome to LinkedIn</h1>
     </div>
-  </nav>
-
-  <div>
-    <img class="imgback" src="assets/public.jfif" alt="">
+    <nav>
+      <button routerLink="/login" class="btn btn-outline-primary mr-2 btn-lg">Login</button>
+      <button routerLink="/register" class="btn btn-outline-dark btn-lg">Register</button>
+      <ul>
+      </ul>
+    </nav>
+    
   </div>
+  
+</header>
+<div>
+  <img class="imgback" src="assets/public.jfif" alt="">
 </div>
-
-
-
-
-
-
-
-
+<br>
 <router-outlet></router-outlet>

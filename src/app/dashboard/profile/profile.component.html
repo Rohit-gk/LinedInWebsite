@@ -1,48 +1,67 @@
-<div class="w3-container w3-content profileContainer">
+<div class="container">
+  <div class="profile-card">
+    <img src="assets/pb6.jfif" alt="" class="cover-pic">
+    <img src="{{userProfiles.profileImage}}" alt="" class="profile-pic">
+    <i class="fa-sharp fa-solid fa-pen mr-2" (click)="editProfile(userProfiles.id)"></i>
+    <h1>{{userProfiles.name }}</h1>
+    <p>{{userProfiles.email}}</p>
+    <p class="organization">{{userProfiles.organization}}</p>
+    <p>{{userProfiles.headline}}</p>
+    <p class="birthdate">{{userProfiles.birthDate}}</p>
+    <p class="details">
+      {{userProfiles.currentPostion}}
+    </p>
+    <button  class="view-btn btn btn-primary">Send Message</button>
+  </div>
+</div>
+<!-- <div class="w3-container w3-content profileContainer">
   <div class="row">
-    <div class="container d-flex">
-      <div class="user-image">
-        <img src="{{userProfiles.profileImage}}" alt="this image contains user-image"><br>
-        <i class="fa-sharp fa-solid fa-pen mr-2" (click)="editProfile(userProfiles.id)"></i>
-        <!-- <i class="fa-sharp fa-solid fa-trash" (click)="deleteProfile(userProfiles.id)"></i> -->
-      </div>
-
-      <div class="content">
-        <h3 class="name">{{userProfiles.name }}</h3><br>
-        <p class="username">{{userProfiles.email}}</p><br>
-        <p class="organization">{{userProfiles.organization}}</p>
-        <p>{{userProfiles.headline}}</p><br>
-        <!-- <p>{{userProfiles.phoneNumber}}</p> -->
-        <p class="birthdate">{{userProfiles.birthDate}}</p>
-
-
-        <div class="links">
-          <a class="facebook" href="https://www.facebook.com/geeksforgeeks.org/" target="_blank" title="GFG_facebook">
-            <i class="fab fa-facebook"></i>
-          </a>
-
-          <a class="git" href="https://github.com/topics/geeksforgeeks" title="GFG_github" target="_blank">
-            <i class="fab fa-github-square"></i>
-          </a>
-
-          <a class="linkedin" href="https://www.geeksforgeeks.org/tag/linkedin/" title="GFG_linkedin" target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-
-          <a class="insta" href="https://www.instagram.com/geeks_for_geeks/?hl=en" target="_blank"
-            title="GFG_instagram">
-            <i class="fab fa-instagram-square"></i>
+     <div class="col-md-5"></div>
+     <div class="col-md-5">
+      <div class="container d-flex">
+        <div class="user-image">
+          <img src="{{userProfiles.profileImage}}" alt="this image contains user-image"><br>
+          <i class="fa-sharp fa-solid fa-pen mr-2" (click)="editProfile(userProfiles.id)"></i>
+        </div>
+  
+        <div class="content">
+          <h3 class="name">{{userProfiles.name }}</h3><br>
+          <p class="username">{{userProfiles.email}}</p><br>
+          <p class="organization">{{userProfiles.organization}}</p>
+          <p>{{userProfiles.headline}}</p><br>
+          <p class="birthdate">{{userProfiles.birthDate}}</p>
+  
+  
+          <div class="links">
+            <a class="facebook" href="https://www.facebook.com/geeksforgeeks.org/" target="_blank" title="GFG_facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+  
+            <a class="git" href="https://github.com/topics/geeksforgeeks" title="GFG_github" target="_blank">
+              <i class="fab fa-github-square"></i>
+            </a>
+  
+            <a class="linkedin" href="https://www.geeksforgeeks.org/tag/linkedin/" title="GFG_linkedin" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+  
+            <a class="insta" href="https://www.instagram.com/geeks_for_geeks/?hl=en" target="_blank"
+              title="GFG_instagram">
+              <i class="fab fa-instagram-square"></i>
+            </a>
+          </div>
+  
+          <p class="details">
+            {{userProfiles.currentPostion}}
+          </p>
+  
+          <a class="effect effect-4">
+            Message
           </a>
         </div>
-
-        <p class="details">
-          {{userProfiles.currentPostion}}
-        </p>
-
-        <a class="effect effect-4" routerLink="/dashboard/chatbox">
-          Message
-        </a>
+      
       </div>
-
-    </div>
+     </div>
+     <div class="col-md-2"></div>
   </div>
+  </div> -->
