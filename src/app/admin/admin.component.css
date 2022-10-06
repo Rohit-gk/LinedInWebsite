@@ -106,7 +106,7 @@ h1 {
 nav a {
   font-size: 1.5rem;
   color: #f9f8eb;
-  text-transform: uppercase;
+  text-transform: titlecase;
 }
 
 .container {
